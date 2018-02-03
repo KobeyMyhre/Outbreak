@@ -1,0 +1,31 @@
+Weapons:
+	-Pistol
+	-Shotgun
+	-AK47
+	-Sniper
+	-Uzi
+	-Melee?
+	
+Enemies:
+	-Basic Melee
+	-Ticker
+	-AOE puddler
+	-Large tough guy
+	
+
+Items:
+	-Healthpack
+	-Grenade
+	
+First Level Objectives:
+	-Get to the elevator
+	-Collect item, unlock door
+	-Get to the helicopter
+Enemy Spawning:
+	-Spawns around players
+	-Monster Closets
+
+Player Health:
+	-Revives
+	-One down, healthpack brings it back
+
