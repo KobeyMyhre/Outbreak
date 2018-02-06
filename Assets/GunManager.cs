@@ -16,5 +16,6 @@ public class GunManager : MonoBehaviour {
 	void Update ()
     {
         currentGun.shoot(controller);
+        currentGun.knockBack(controller);
 	}
 }

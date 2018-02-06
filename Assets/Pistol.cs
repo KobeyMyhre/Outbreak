@@ -15,14 +15,19 @@ public class Pistol : Gun {
             {
                 if (hit.collider.tag == "enemy")
                 {
+                    shootLine(hit.point);
                     IDamageable attempt = hit.collider.GetComponent<IDamageable>();
                     if (attempt != null)
                     {
                         attempt.takeDamage(damage);
                     }
                 }
+                else
+                {
+                    shootLine(transform.position + transform.forward * 50);
+                }
             }
-            
+            shootLine(transform.position + transform.forward * 50);
         }
         if(currentClip <= 0 )
         {

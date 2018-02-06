@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     public float lookZ;
 
     public bool fireDown;
-
+    public bool knockBackDown;
 	// Use this for initialization
 	void Start ()
     {
@@ -36,9 +36,24 @@ public class PlayerController : MonoBehaviour {
         triggerDownR = 0;
         return false;
     }
+    int triggerDownL;
+    bool isTriggerDownL()
+    {
+        if (state.Triggers.Left == 1)
+        {
+            triggerDownL++;
+            if (triggerDownL > 1)
+            {
+                return false;
+            }
+            return true;
+        }
+        triggerDownL = 0;
+        return false;
+    }
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update ()
     {
         state = GamePad.GetState(playerIndex);
         prev = GamePad.GetState(playerIndex);
@@ -51,5 +66,6 @@ public class PlayerController : MonoBehaviour {
         lookZ = state.ThumbSticks.Right.Y;
 
         fireDown = isTriggerDownR();
+        knockBackDown = isTriggerDownL();
 	}
 }

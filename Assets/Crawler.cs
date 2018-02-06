@@ -11,9 +11,11 @@ public class Crawler : MonoBehaviour, IDamageable {
     private float attackTimer;
     public float maxHealth;
     float currentHealth;
+    Rigidbody rb;
 	// Use this for initialization
 	void Start ()
     {
+        rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
         attackTimer = 0;
         agent = GetComponent<NavMeshAgent>();
@@ -60,4 +62,7 @@ public class Crawler : MonoBehaviour, IDamageable {
             gameObject.SetActive(false);
         }
     }
+
+   
+
 }

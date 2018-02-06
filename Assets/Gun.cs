@@ -11,11 +11,11 @@ public class Gun : MonoBehaviour {
     public int maxAmmo;
     public float reloadTime;
     float reloadTimer;
-
+    LineRenderer line;
 
     private void Start()
     {
-        
+        line = GetComponent<LineRenderer>();
         currentClip = maxClip;
         reloadTimer = reloadTime;
     }
@@ -46,5 +46,36 @@ public class Gun : MonoBehaviour {
         }
         
     }
-	
+
+    public void knockBack(PlayerController controller)
+    {
+        if(controller.knockBackDown)
+        {
+            RaycastHit hit;
+            if(Physics.SphereCast(transform.position,3, transform.forward, out hit, 10, 1, QueryTriggerInteraction.Ignore))
+            {
+                Debug.Log(hit.collider.name);
+            }
+        }
+    }
+
+    protected void shootLine(Vector3 endPos)
+    {
+        line.enabled = true;
+        line.SetPosition(0, transform.position);
+        line.SetPosition(1, endPos);
+        StopCoroutine(offShoot());
+        StartCoroutine(offShoot());
+    }
+
+    IEnumerator offShoot()
+    {
+        yield return .1f;
+        line.enabled = false;
+    }
+
+    
+
+
+
 }
